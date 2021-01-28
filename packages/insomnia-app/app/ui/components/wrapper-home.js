@@ -28,7 +28,7 @@ import YAML from 'yaml';
 import TimeFromNow from './time-from-now';
 import Highlight from './base/highlight';
 import type { GlobalActivity } from '../../common/constants';
-import { ACTIVITY_DEBUG, ACTIVITY_HOME, ACTIVITY_SPEC } from '../../common/constants';
+import { ACTIVITY_HOME, ACTIVITY_INSOMNIA, ACTIVITY_SPEC } from '../../common/constants';
 import { fuzzyMatchAll } from '../../common/misc';
 import type { WrapperProps } from './wrapper';
 import Notice from './notice';
@@ -36,7 +36,7 @@ import GitRepositorySettingsModal from '../components/modals/git-repository-sett
 import PageLayout from './page-layout';
 import type { ForceToWorkspace } from '../redux/modules/helpers';
 import { ForceToWorkspaceKeys } from '../redux/modules/helpers';
-import coreLogo from '../images/insomnia-core-logo.svg';
+import coreLogo from '../images/insomnia-core-logo.png';
 import { MemPlugin } from '../../sync/git/mem-plugin';
 import {
   GIT_CLONE_DIR,
@@ -351,7 +351,7 @@ class WrapperHome extends React.PureComponent<Props, State> {
     );
     const version = spec?.info?.version || '';
     let label: string = 'Insomnia';
-    let defaultActivity = ACTIVITY_DEBUG;
+    let defaultActivity = ACTIVITY_INSOMNIA;
 
     if (spec || w.scope === 'designer') {
       label = '';
