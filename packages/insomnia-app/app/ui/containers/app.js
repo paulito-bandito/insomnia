@@ -16,7 +16,6 @@ import RequestSwitcherModal from '../components/modals/request-switcher-modal';
 import SettingsModal, { TAB_INDEX_SHORTCUTS } from '../components/modals/settings-modal';
 import {
   ACTIVITY_HOME,
-  ACTIVITY_INSOMNIA,
   COLLAPSE_SIDEBAR_REMS,
   DEFAULT_PANE_HEIGHT,
   DEFAULT_PANE_WIDTH,
@@ -977,12 +976,6 @@ class App extends PureComponent {
     console.log('[plugins] reloaded');
   }
 
-  _handleToggleInsomniaActivity() {
-    const { activity, handleSetActiveActivity } = this.props;
-
-    handleSetActiveActivity(activity === ACTIVITY_INSOMNIA ? ACTIVITY_HOME : ACTIVITY_INSOMNIA);
-  }
-
   /**
    * Update document.title to be "Workspace (Environment) – Request" when not home
    * @private
@@ -1183,8 +1176,6 @@ class App extends PureComponent {
     });
 
     ipcRenderer.on('reload-plugins', this._handleReloadPlugins);
-
-    ipcRenderer.on('toggle-insomnia', this._handleToggleInsomniaActivity);
 
     ipcRenderer.on('toggle-preferences-shortcuts', () => {
       App._handleShowSettingsModal(TAB_INDEX_SHORTCUTS);
