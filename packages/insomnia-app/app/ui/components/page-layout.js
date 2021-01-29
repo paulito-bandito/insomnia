@@ -5,7 +5,6 @@ import type { WrapperProps } from './wrapper';
 import classnames from 'classnames';
 import ErrorBoundary from './error-boundary';
 import Sidebar from './sidebar/sidebar';
-import { isInsomnia } from '../../common/constants';
 
 type Props = {
   wrapperProps: WrapperProps,
@@ -41,7 +40,6 @@ class PageLayout extends React.PureComponent<Props, State> {
     } = this.props;
 
     const {
-      activity,
       activeEnvironment,
       activeGitRepository,
       activeWorkspace,
@@ -51,7 +49,6 @@ class PageLayout extends React.PureComponent<Props, State> {
       handleSetActiveEnvironment,
       handleSetActiveWorkspace,
       handleSetSidebarRef,
-      handleShowSettingsModal,
       handleSetRequestPaneRef,
       handleSetResponsePaneRef,
       handleStartDragPaneHorizontal,
@@ -139,15 +136,6 @@ class PageLayout extends React.PureComponent<Props, State> {
               workspace={activeWorkspace}
               workspaces={workspaces}>
               {renderPageSidebar()}
-              {!isInsomnia(activity) && (
-                <div className="sidebar__footer">
-                  <button
-                    className="btn btn--compact wide row-spaced"
-                    onClick={handleShowSettingsModal}>
-                    Preferences <i className="fa fa-gear" />
-                  </button>
-                </div>
-              )}
             </Sidebar>
 
             <div className="drag drag--sidebar">
