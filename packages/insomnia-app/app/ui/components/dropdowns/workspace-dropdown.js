@@ -34,6 +34,7 @@ import { RENDER_PURPOSE_NO_RENDER } from '../../../common/render';
 import type { Environment } from '../../../models/environment';
 
 type Props = {
+  displayName: string,
   activeEnvironment: Environment | null,
   activeWorkspace: Workspace,
   handleSetActiveWorkspace: (id: string) => void,
@@ -245,6 +246,7 @@ class WorkspaceDropdown extends React.PureComponent<Props, State> {
 
   render() {
     const {
+      displayName,
       className,
       workspaces,
       activeWorkspace,
@@ -283,8 +285,9 @@ class WorkspaceDropdown extends React.PureComponent<Props, State> {
           onOpen={this._handleDropdownOpen}
           onHide={this._handleDropdownHide}
           {...(other: Object)}>
-          <DropdownButton className="btn space-left">
-            <i className="fa fa-caret-down" />
+          <DropdownButton>
+            {displayName}
+            <i className="fa fa-caret-down space-left" />
             {isLoading ? <i className="fa fa-refresh fa-spin space-left" /> : null}
           </DropdownButton>
           <DropdownDivider>{activeWorkspace.name}</DropdownDivider>
