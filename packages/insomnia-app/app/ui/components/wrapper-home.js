@@ -28,7 +28,7 @@ import YAML from 'yaml';
 import TimeFromNow from './time-from-now';
 import Highlight from './base/highlight';
 import type { GlobalActivity } from '../../common/constants';
-import { ACTIVITY_HOME, ACTIVITY_INSOMNIA, ACTIVITY_SPEC } from '../../common/constants';
+import { ACTIVITY_DEBUG, ACTIVITY_HOME, ACTIVITY_SPEC } from '../../common/constants';
 import { fuzzyMatchAll } from '../../common/misc';
 import type { WrapperProps } from './wrapper';
 import Notice from './notice';
@@ -274,12 +274,9 @@ class WrapperHome extends React.PureComponent<Props, State> {
   async _handleClickCard(id: string, defaultActivity: GlobalActivity) {
     const { handleSetActiveWorkspace, handleSetActiveActivity } = this.props.wrapperProps;
 
-    const { scope } = await models.workspace.getById(id);
     const { activeActivity } = await models.workspaceMeta.getOrCreateByParentId(id);
 
-    if (scope === 'collection') {
-      handleSetActiveActivity(ACTIVITY_INSOMNIA);
-    } else if (!activeActivity || activeActivity === ACTIVITY_HOME) {
+    if (!activeActivity || activeActivity === ACTIVITY_HOME) {
       handleSetActiveActivity(defaultActivity);
     } else {
       handleSetActiveActivity(activeActivity);
@@ -355,7 +352,7 @@ class WrapperHome extends React.PureComponent<Props, State> {
     );
     const version = spec?.info?.version || '';
     let label: string = 'Insomnia';
-    let defaultActivity = ACTIVITY_INSOMNIA;
+    let defaultActivity = ACTIVITY_DEBUG;
 
     if (spec || w.scope === 'designer') {
       label = '';

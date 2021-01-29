@@ -83,7 +83,6 @@ import type { GlobalActivity } from '../../common/constants';
 import {
   ACTIVITY_DEBUG,
   ACTIVITY_HOME,
-  ACTIVITY_INSOMNIA,
   ACTIVITY_SPEC,
   ACTIVITY_UNIT_TEST,
   getAppName,
@@ -818,7 +817,7 @@ class Wrapper extends React.PureComponent<WrapperProps, State> {
             />
           )}
 
-          {(activity === ACTIVITY_DEBUG || activity === ACTIVITY_INSOMNIA) && (
+          {activity === ACTIVITY_DEBUG && (
             <WrapperDebug
               forceRefreshKey={this.state.forceRefreshKey}
               gitSyncDropdown={gitSyncDropdown}
